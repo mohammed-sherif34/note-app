@@ -2,21 +2,34 @@ import 'package:flutter/material.dart';
 
 class CustomTextFiled extends StatelessWidget {
   const CustomTextFiled(
-      {super.key, required this.hint, required this.maxLines});
+      {super.key, required this.hint, required this.maxLines, this.onSaved});
   final String hint;
   final int maxLines;
+  final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return 'Field is required';
+        } else {
+          return null;
+        }
+      },
+      onSaved: onSaved,
       maxLines: maxLines,
-      decoration: InputDecoration(
-        hintText: hint,
-        errorBorder: customBorderDecoration(Colors.redAccent),
-        disabledBorder: customBorderDecoration(Colors.white),
-        enabledBorder: customBorderDecoration(Colors.white),
-        focusedBorder: customBorderDecoration(),
-        border: customBorderDecoration(),
-      ),
+      decoration: customInputDecoration(),
+    );
+  }
+
+  InputDecoration customInputDecoration() {
+    return InputDecoration(
+      hintText: hint,
+      errorBorder: customBorderDecoration(Colors.redAccent),
+      disabledBorder: customBorderDecoration(Colors.white),
+      enabledBorder: customBorderDecoration(Colors.white),
+      focusedBorder: customBorderDecoration(),
+      border: customBorderDecoration(),
     );
   }
 

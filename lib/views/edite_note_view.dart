@@ -20,11 +20,11 @@ class EditeNoteView extends StatelessWidget {
               title: 'Edie Note',
             ),
           ),
-          AddNoteBottomSheet(
+         /*  AddNoteBottomSheet(
             title: 'title',
             content: 'content',
             button: false,
-          ),
+          ), */
         ],
       ),
     );
