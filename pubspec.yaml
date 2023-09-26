@@ -40,6 +40,8 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   bloc: ^8.1.2
   meta: ^1.9.1
+  flutter_bloc: ^8.1.3
+  modal_progress_hud_nsn: ^0.4.0
 
 dev_dependencies:
   flutter_test:
@@ -80,10 +82,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets\fonts\Poppins-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -94,3 +96,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  
