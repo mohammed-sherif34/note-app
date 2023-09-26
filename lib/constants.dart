@@ -1,1 +1,1 @@
-final String knotebox = 'notebox';
+const String knotebox = 'notebox';
