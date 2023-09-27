@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 
 class CustomTextFiled extends StatelessWidget {
   const CustomTextFiled(
-      {super.key, required this.hint, required this.maxLines, this.onSaved});
+      {super.key,
+      required this.hint,
+      required this.maxLines,
+      this.onSaved,
+      this.onChanged});
   final String hint;
   final int maxLines;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -16,6 +21,7 @@ class CustomTextFiled extends StatelessWidget {
           return null;
         }
       },
+      onChanged: onChanged,
       onSaved: onSaved,
       maxLines: maxLines,
       decoration: customInputDecoration(),

@@ -4,18 +4,12 @@ import 'package:note_app/cubit/add_note_cubit/add_note_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/widgets/custom_button.dart';
 import 'package:note_app/widgets/custom_text_filed.dart';
+import 'package:intl/intl.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
     super.key,
-    required this.titleHint,
-    required this.contentHint,
-    required this.button,
   });
-
-  final String titleHint;
-  final String contentHint;
-  final bool button;
 
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
@@ -39,7 +33,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onSaved: (value) {
               title = value!;
             },
-            hint: widget.titleHint,
+            hint: 'hint',
             maxLines: 1,
           ),
           const SizedBox(
@@ -49,40 +43,42 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onSaved: (value) {
               subTitle = value!;
             },
-            hint: widget.contentHint,
+            hint: 'content',
             maxLines: 5,
           ),
           const SizedBox(
             height: 50,
           ),
-          widget.button == true
-              ? BlocBuilder<AddNoteCubit, AddNoteState>(
-                  builder: (context, state) {
-                  return CustomButton(
-                    isloading: state is AddNoteCubLoading ? true : false,
-                    ontap: () {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
-                        var noteModel = NoteModel(
-                            title: title!,
-                            subbtitle: subTitle!,
-                            date: DateTime.now().toString(),
-                            color: Colors.brown.value);
-                        BlocProvider.of<AddNoteCubit>(context)
-                            .addNote(noteModel);
-                      } else {
-                        autovalidateMode = AutovalidateMode.always;
-                        setState(() {});
-                      }
-                    },
-                  );
-                })
-              : const SizedBox(),
+          BlocBuilder<AddNoteCubit, AddNoteState>(builder: (context, state) {
+            return CustomButton(
+              isloading: state is AddNoteCubLoading ? true : false,
+              ontap: () {
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState!.save();
+                  var noteModel = NoteModel(
+                      title: title!,
+                      subbtitle: subTitle!,
+                      date: formatDate(),
+                      color: Colors.blue.value);
+                  BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                } else {
+                  autovalidateMode = AutovalidateMode.always;
+                  setState(() {});
+                }
+              },
+            );
+          }),
           const SizedBox(
             height: 30,
           ),
         ],
       ),
     );
+  }
+
+  String formatDate() {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('yyyy-MM-dd').format(now);
+    return formattedDate;
   }
 }

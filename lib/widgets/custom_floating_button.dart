@@ -16,11 +16,7 @@ class CustomFloatingButton extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           context: context,
           builder: ((context) {
-            return const AddNoteBottomSheet(
-              titleHint: 'title',
-              contenthint: 'content',
-              button: true,
-            );
+            return const AddNoteBottomSheet();
           }),
         );
       },
