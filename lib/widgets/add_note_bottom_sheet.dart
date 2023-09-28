@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:note_app/cubit/add_note_cubit/add_note_cubit.dart';
 import 'package:note_app/cubit/add_note_cubit/notes_cubit/notes_cubit.dart';
 import 'package:note_app/widgets/add_note_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({
@@ -46,3 +48,5 @@ class AddNoteBottomSheet extends StatelessWidget {
     );
   }
 }
+
+

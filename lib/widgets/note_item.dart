@@ -12,7 +12,7 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditeNoteView.id,arguments: note);
+        Navigator.pushNamed(context, EditeNoteView.id, arguments: note);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 4),
@@ -23,11 +23,9 @@ class NoteItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              isThreeLine: true,
-              //title decoration
               title: Text(
                 note.title,
-                style: TextStyle(color: Colors.black, fontSize: 28),
+                style: const TextStyle(color: Colors.black, fontSize: 28),
               ),
               //sub title decoration
               subtitle: Padding(
@@ -42,7 +40,7 @@ class NoteItem extends StatelessWidget {
                 onPressed: () {
                   note.delete();
                   BlocProvider.of<NotesCubit>(context).fetchNotes();
-                 // BlocProvider
+                  // BlocProvider
                 },
                 icon: const Icon(
                   FontAwesomeIcons.trash,

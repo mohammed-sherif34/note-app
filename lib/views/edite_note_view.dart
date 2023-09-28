@@ -4,6 +4,7 @@ import 'package:note_app/cubit/add_note_cubit/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/widgets/custom_app_bar.dart';
 import 'package:note_app/widgets/custom_text_filed.dart';
+import 'package:note_app/widgets/edit_note_colorl_ist.dart';
 
 class EditeNoteView extends StatefulWidget {
   const EditeNoteView({super.key});
@@ -35,7 +36,6 @@ class _EditeNoteViewState extends State<EditeNoteView> {
                   note.subbtitle = subtitle ?? note.subbtitle;
                   note.save();
                   BlocProvider.of<NotesCubit>(context).fetchNotes();
-                  // setState(() {});
                   Navigator.pop(context);
                 },
                 iconshape: Icons.check,
@@ -60,6 +60,9 @@ class _EditeNoteViewState extends State<EditeNoteView> {
               onChanged: (value) {
                 subtitle = value;
               },
+            ),
+            EditeVColorList(
+              note: note,
             )
           ],
         ),
